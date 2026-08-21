@@ -1,0 +1,17 @@
+{
+  "indicator_type": "MACD_RSI",
+  "fast_period": 28,
+  "slow_period": 35,
+  "rsi_period": 17,
+  "rsi_oversold": 38.984168683611,
+  "rsi_overbought": 79.16223656034903,
+  "stop_loss_pct": 0.044224430036732515,
+  "take_profit_pct": 0.2,
+  "pair": "ETH-USD",
+  "fitness": 1.1076652402124099,
+  "total_return": 6.431315351142944,
+  "sharpe_ratio": 1.1076652402124099,
+  "max_drawdown": 0.12950908802300828,
+  "num_trades": 34,
+  "_deployed_at": "2026-04-11T22:24:57.839644"
+}

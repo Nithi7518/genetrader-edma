@@ -1,0 +1,22 @@
+# GeneTrader — Python Dependencies
+# Install with: pip install -r requirements.txt
+
+# Core scientific stack
+numpy>=1.24
+pandas>=2.0
+
+# Data download
+yfinance>=0.2.36
+
+# Genetic Algorithm framework
+deap>=1.4.1
+
+# Real-time data
+websockets>=12.0
+
+# Plotting
+matplotlib>=3.7
+
+# Optional: faster indicator computation (uncomment if TA-Lib is installed)
+# TA-Lib installation: https://ta-lib.github.io/ta-lib-python/
+# ta-lib>=0.4.28

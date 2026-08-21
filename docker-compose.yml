@@ -1,0 +1,50 @@
+version: '3.8'
+
+services:
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+
+  data_ingestion:
+    build:
+      context: .
+      dockerfile: services/data_ingestion/Dockerfile
+    environment:
+      - REDIS_URL=redis://redis:6379/0
+      - POLL_INTERVAL=3600
+    depends_on:
+      - redis
+    restart: always
+
+  compute_engine:
+    build:
+      context: .
+      dockerfile: services/compute_engine/Dockerfile
+    environment:
+      - CELERY_BROKER_URL=redis://redis:6379/0
+    depends_on:
+      - redis
+    restart: always
+
+  strategy_manager:
+    build:
+      context: .
+      dockerfile: services/strategy_manager/Dockerfile
+    ports:
+      - "8001:8001"
+    restart: always
+
+  api_gateway:
+    build:
+      context: .
+      dockerfile: services/api_gateway/Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - REDIS_URL=redis://redis:6379/0
+      - CELERY_BROKER_URL=redis://redis:6379/0
+    depends_on:
+      - redis
+      - compute_engine
+    restart: always
